@@ -24,7 +24,6 @@ class Node{
         cout<<"memory free"<<value<<endl;
    }
 
-
 };
 
 // insert node at head og linked list
@@ -58,10 +57,10 @@ void insertAtTailWithOutTail(Node * &head,int d){
 void print(Node* &head){
   Node* temp = head;
   while(temp !=NULL){
-    cout<<temp->data<<"->";  
+    cout<<temp->data<<" ->";  
     temp=temp->next;
   }
-  cout<<"NULL"<<endl;
+  cout<<" NULL"<<endl;
 
 }
 
@@ -117,43 +116,4 @@ void deletePosition(Node* & head,int position){
         curr->next = NULL;
         delete curr;
     }
-}
-
-bool isCircular(Node *head){
-    if(head == NULL){
-        return NULL ;
-    }
-    Node* temp = head -> next ;
-    while(temp != NULL && temp != head){
-        temp = temp -> next ;
-    }
-     if(temp == head){
-        return true;
-    }
-    return false;
-}
-
-
-int main(){
-    //create a new node
-    // Node* node1 = new Node(10);
-    // cout<< node1->data <<endl;
-    // cout<< node1->next <<endl;
-
-    //head pointer which points head of node1
-    Node* head = NULL;
-    insertAtHead(head,15);
-    insertAtHead(head,20);
-    print(head);
-    insertAtTailWithOutTail(head,3);
-    print(head);
-    insertAtTailWithOutTail(head,50);
-    print(head);
-    deletePosition(head,3);
-    print(head);
-    insertAtPosition(head,4,100);
-    print(head);
-    
-    cout<<"is circulat :"<<isCircular(head);
-    return 0;
 }

@@ -95,30 +95,48 @@ void print(Node* tail ) {
     }while(tail != temp );
     cout<<endl;
 }
-
+bool isCircular(Node *head){
+    if(head == NULL){
+        return false ;
+    }
+    Node* temp = head -> next ;
+    while(temp != NULL && temp != head){
+        temp = temp -> next ;
+    }
+     if(temp == head){
+        return true;
+    }
+    return false;
+}
 
 int main(){
 
     Node* tail = NULL;
-
+    
     insertNode(tail,5,3);
     print(tail);
 
-    // insertNode(tail,3,5);
-    // print(tail);
+    insertNode(tail,3,5);
+    print(tail);
 
-    // insertNode(tail,5,7);
-    // print(tail);
+    insertNode(tail,5,7);
+    print(tail);
 
-    // insertNode(tail,7,9);
-    // print(tail);
+    insertNode(tail,7,9);
+    print(tail);
 
-    // insertNode(tail,5,11);
-    // print(tail);
+    insertNode(tail,5,11);
+    print(tail);
 
     deleteNode(tail,3);
     print(tail);
-
+    
+   if(isCircular(tail)){
+    cout<<"circular in nature "<<endl;
+   }
+   else{
+    cout<<"not circular in nature ";
+   }
 
     return 0;
 }
