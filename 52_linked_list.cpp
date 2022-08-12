@@ -26,17 +26,35 @@ class Node{
 
 
 };
-void insertAtHaad(Node* &head,int d){
+
+// insert node at head og linked list
+void insertAtHead(Node* &head,int d){
   //new node craete
   Node* temp = new Node(d);
   temp->next = head;
   head = temp;
 }
+
+// insert node at tail of linked list but refrence given of tail
 void insertAtTail(Node* &tail,int d){
     Node*temp = new Node(d);
     tail->next = temp;
     tail = temp;
 }
+
+//insert node at tail with out giving refrence of tail
+void insertAtTailWithOutTail(Node * &head,int d){
+     Node* nodetoinsert = new Node(d);
+     Node* temp = head;
+     while(temp->next !=NULL){
+        temp = temp->next;
+     }
+     temp->next = nodetoinsert;
+     temp = nodetoinsert;
+
+}
+
+// to display linked list 
 void print(Node* &head){
   Node* temp = head;
   while(temp !=NULL){
@@ -47,10 +65,11 @@ void print(Node* &head){
 
 }
 
-void insertAtPosition(Node* &tail,Node* &head,int position , int d){
+//insert node at given position 
+void insertAtPosition(Node* &head,int position , int d){
     //insert at satrting position
     if(position==1){
-        insertAtHaad(head,d);
+        insertAtHead(head,d);
         return;
     }
     
@@ -62,7 +81,7 @@ void insertAtPosition(Node* &tail,Node* &head,int position , int d){
     }
     //insert node at last position
     if(temp->next==NULL){
-        insertAtTail(tail,d);
+        insertAtTailWithOutTail(head,d);
         return;
     }
 
@@ -101,28 +120,22 @@ void deletePosition(Node* & head,int position){
 }
 int main(){
     //create a new node
-    Node* node1 = new Node(10);
-    cout<< node1->data <<endl;
-    cout<< node1->next <<endl;
+    // Node* node1 = new Node(10);
+    // cout<< node1->data <<endl;
+    // cout<< node1->next <<endl;
 
     //head pointer which points head of node1
-    Node* head = node1;
-    Node* tail = node1;
-    print(head); 
-    insertAtTail(tail,12);
-    print(head); 
-     insertAtTail(tail,15);
-    print(head); 
-    // insertAtHaad(tail,15);
-    // print(head);
-    // insertAtHaad(tail,25);
-    // print(head);
-    insertAtPosition(tail,head,4,25);
+    Node* head = NULL;
+    insertAtHead(head,15);
+    insertAtHead(head,20);
     print(head);
-    cout<<head->data<<endl;
-    cout<<tail->data<<endl;
-
-    deletePosition(head,4);
+    insertAtTailWithOutTail(head,3);
+    print(head);
+    insertAtTailWithOutTail(head,50);
+    print(head);
+    deletePosition(head,3);
+    print(head);
+    insertAtPosition(head,4,100);
     print(head);
 
     return 0;

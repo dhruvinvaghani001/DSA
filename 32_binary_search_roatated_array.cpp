@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-int binarysearch(int a[],int high,int key){
+int binarysearchRotated(int a[],int high,int key){
     int low =0,mid;
     while (low<=high)
     {
@@ -33,7 +33,7 @@ int binarysearch(int a[],int high,int key){
 int main(){
     //write code to find key present in roatted sorted array
      int a[] ={20,30,40,50,60,5,10};
-     cout<<"key is present at :"<<binarysearch(a,6,30);
+     cout<<"key is present at :"<<binarysearchRotated(a,6,30);
 
     return 0;
 }
